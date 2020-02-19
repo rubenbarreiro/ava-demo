@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "ava"
+    "test": "ENV=test ava tests/** --verbose",
+    "coverage": "ENV=test nyc --reporter=lcov --reporter=text ava tests/** --verbose"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,6 +16,9 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "ava": "^3.3.0"
+    "ava": "^3.3.0",
+    "nyc": "^15.0.0",
+    "supertest": "^4.0.2",
+    "tap-nyan": "^1.1.0"
   }
 }
