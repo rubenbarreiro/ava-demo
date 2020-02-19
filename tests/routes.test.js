@@ -2,14 +2,14 @@ const test = require('ava');
 const request = require('supertest');
 const app = require('../app');
 
-test.serial('GET /', async(t) => {
+test('GET /', async(t) => {
 	const res = await request(app).get('/');
 
 	t.is(res.status, 200);
 	t.pass();
 });
 
-test.serial('POST /info', async(t) => {
+test('POST /info', async(t) => {
 	const res = await request(app).post('/info').send({ confirmation: true });
 
 	t.is(res.status, 200);
@@ -17,14 +17,14 @@ test.serial('POST /info', async(t) => {
 	t.pass();
 });
 
-test.serial('POST /info fail', async(t) => {
+test('POST /info fail', async(t) => {
 	const res = await request(app).post('/info');
 
 	t.is(res.status, 400);
 	t.pass();
 });
 
-test.serial('POST /info fail with different object', async(t) => {
+test('POST /info fail with different object', async(t) => {
 	const res = await request(app).post('/info').send({ confirmation: true });
 
 	t.is(res.status, 200);
